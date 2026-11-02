@@ -73,3 +73,5 @@ jobs:
           # Push a Docker Hub
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/dds-devops-demo:${GITHUB_SHA::7}
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/dds-devops-demo:latest
+      - name: Disparar despliegue en Render
+        run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
